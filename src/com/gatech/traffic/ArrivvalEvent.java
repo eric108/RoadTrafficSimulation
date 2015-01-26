@@ -1,6 +1,6 @@
 package com.gatech.traffic;
 
-public class ArrivedEvent implements EventHandler{
+public class ArrivvalEvent implements EventHandler{
 
 	@Override
 	public void execute() {

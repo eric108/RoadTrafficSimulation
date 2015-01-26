@@ -1,5 +1,5 @@
 package com.gatech.traffic;
 
-public class EventVariable {
+public class SimData {
 
 }
