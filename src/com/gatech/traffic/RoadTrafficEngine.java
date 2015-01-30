@@ -1,17 +1,19 @@
 package com.gatech.traffic;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class RoadTrafficEngine {
 	public static void main(String[] args){
-		init();
-		Time time = SimData.time;
 		
-		while(time.getTime()<900) {
-			System.out.println("Now: " + time.getTime());
+
+		init();
+		
+		while(SimData.time.getTime()<900) {
+			System.out.println("Now: " + SimData.time.getTime());
 			eventExecution();
-			time.increment();
+			SimData.time.increment();
 		}
 		output();
 		
@@ -22,6 +24,7 @@ public class RoadTrafficEngine {
 		SimData.time = new Time();
 		
 		Comparator<Car> comparator = new CarComparator();
+		SimData.queues = new ArrayList<PriorityQueue<Car>>(5);
 		for(PriorityQueue<Car> queue: SimData.queues) {
 			queue = new PriorityQueue<Car>(15, comparator);
 		}
@@ -38,10 +41,7 @@ public class RoadTrafficEngine {
 	}
 	
 	private static void eventExecution(){
-		for(PriorityQueue<Car> queue: SimData.queues) {
-				
-			
-		}
+
 	}
 	
 	
