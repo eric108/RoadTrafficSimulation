@@ -15,7 +15,7 @@ public class RandomGenerator {
 	{
 		//Date date = new Date();
 		//long seed = date.getTime();
-		System.out.println(Long.toString(this.seed));
+		//System.out.println(Long.toString(this.seed));
 		final long m = 2147483647;
 		final long a = 48271;
 		final long q = 44488;

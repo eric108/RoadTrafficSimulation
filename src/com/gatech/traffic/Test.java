@@ -10,9 +10,9 @@ public class Test {
 		rg.RandomNumber();
 		for (int i = 0; i < 100000; i++)
 		{
-			TestUni[i] = rg.RandomNumber();
+			TestUni[i] = rg.Exponential(1);
 		}
-		rg.Output(TestUni, "0_1");
+		rg.Output(TestUni, "Exponential");
 	}
 
 }
