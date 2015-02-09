@@ -10,11 +10,13 @@ public class ArrivalEvent extends AbstractEvent{
 	
 	public void execute() {
 		SimData.intersections.get(index).offer(car);
-		if(SimData.trafficLights[index] == 'G' 
-				&& SimData.intersections.get(index+1).size()<SimData.capacities[index+1] 
+		if(SimData.trafficLights[index] != 'R' 
+				&& ( index==4 ||SimData.intersections.get(index+1).size()<SimData.capacities[index+1] )
 				&& SimData.runwayFree[index] == true) {
 			SimData.runwayFree[index]=false;
 			SimData.queue.add(new CrossedEvent(SimData.now+1, index));
+			System.out.println("Time: "+ SimData.now+" Event "+this.getClass().getSimpleName() + ": CrossedEvent scheduled at intersection " + index);
+
 		}
 	}
 }
