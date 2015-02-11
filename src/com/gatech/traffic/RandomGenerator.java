@@ -28,11 +28,11 @@ public class RandomGenerator {
 		return ((double) this.seed/m);
 	}
 	
-	public double UniformAB(double lower, double upper) // [a,b]Uniform Distribution
+	public int UniformAB(int lower, int upper) // [a,b]Uniform Distribution
 	{
 		RandomNumber();
 		RandomNumber();
-		return Math.floor(lower + (upper - lower) * RandomNumber());
+		return (int)(Math.floor(lower + (upper - lower) * RandomNumber()));
 	}
 	
 	public double Exponential(float mu) // Exponential Distribution with mean = mu
@@ -91,6 +91,33 @@ public class RandomGenerator {
 			timestamp[i] = (int)(start + (end - start) * u[i]);
 		}
 		return timestamp;
+	}
+	
+	public String[] LightInitial(int ind)
+	{
+		int R = SimData.lightRs[ind];
+		int Y = SimData.lightYs[ind];
+		int G = SimData.lightGs[ind];
+		int time = UniformAB(0, R+Y+G);
+		//System.out.println(Integer.toString(time));
+		String Color;
+		if (time > 0 && time < R)
+		{
+			Color = "R";
+		}
+		else if (time >= R && time < R+Y)
+		{
+			Color = "Y";
+			time = time - R;
+		}
+		else
+		{
+			Color = "G";
+			time = time - R - Y;
+		}
+		String[] s = {Color, Integer.toString(time)};
+		return s;
+		
 	}
 	
 	public void Output(double[] OutArray, String distribution)
