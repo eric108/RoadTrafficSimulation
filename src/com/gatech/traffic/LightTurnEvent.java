@@ -31,6 +31,8 @@ public class LightTurnEvent extends AbstractEvent{
 			System.out.println("Time: "+ SimData.now+" Event "+this.getClass().getSimpleName() + ": CrossedEvent scheduled at intersection " + index);
 
 		}
+		RandomGenerator random = new RandomGenerator();
+		SimData.capacities[index] += random.UniformAB(-2, +2);
 	}
 
 }

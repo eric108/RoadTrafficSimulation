@@ -4,13 +4,15 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 public class Engine {
+	static int startTime = 0;
+	static int endTime = 9000;
+	static int lightStartTime = -88;
 	
 	public static void main(String[] args) throws FileNotFoundException {
-		SimData.now = 0;
 		randomizeCarArrival();
 		randomizeTrafficLight();
 		int count = 0;
-		while(SimData.now<500 && !SimData.queue.isEmpty()) {
+		while(SimData.now<endTime && !SimData.queue.isEmpty()) {
 			System.out.println("Event " + count++);
 
 			AbstractEvent event = SimData.queue.poll();
@@ -22,18 +24,30 @@ public class Engine {
 	}
 	
 	private static void randomizeCarArrival() {
-		SimData.queue.add(new ArrivalEvent(SimData.now+3, 0, new Car(0, SimData.now+3)));
-
-		SimData.queue.add(new ArrivalEvent(SimData.now+5, 0, new Car(1, SimData.now+5)));
-
-		SimData.queue.add(new ArrivalEvent(SimData.now+7, 0, new Car(2, SimData.now+7)));
+		RandomGenerator random = new RandomGenerator();
+		double[] cars = random.GeneratePoissonArrival(startTime, endTime);
+		int id = 0;
+		for(double time: cars) {
+			SimData.queue.add(new ArrivalEvent((int)time, 0, new Car(id++, (int)time)));
+			
+		}
+		System.out.println(cars.length + ">>>>>>>>>>>>" + SimData.queue.size());
 		System.out.println("Randomized Initial Car Arrivals");
 	} 
 	
 	private static void randomizeTrafficLight() {
-		for(int i = 0; i<5; i++) {
-			SimData.queue.add(new LightTurnEvent(SimData.now, i));
+		RandomGenerator random = new RandomGenerator();
+		
+		int[] times = new int[SimData.lightGs.length];
+		for(int i= 0; i<times.length;i++) {
+			times[i] = random.UniformAB(lightStartTime, 0);
 		}
+
+		for(int i =0; i<times.length; i++) {
+			SimData.trafficLights[i] = 'R';
+			SimData.queue.add(new LightTurnEvent(times[i], i));
+		}
+
 		System.out.println("Randomized Initial Traffic Lights");
 
 	}
