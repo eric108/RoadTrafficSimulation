@@ -75,7 +75,7 @@ public class RandomGenerator {
 	public double[] GeneratePoissonArrival(int start, int end)
 	{
 		
-		int CarNum = Poisson(149);
+		int CarNum = Poisson((int)(149 * (double)(end - start)/900));
 		System.out.println(Integer.toString(CarNum));
 		double[] u = new double[CarNum];
 		u[0] = RandomNumber();
