@@ -11,9 +11,11 @@ public class CrossedEvent extends AbstractEvent{
 		// TODO Auto-generated method stub
 		if(SimData.intersections.get(index).size()==0) return;
 		Car car = SimData.intersections.get(index).poll();
+		if(index==0) car.startTime = SimData.now;
 		if(index>=1)SimData.queue.add(new CrossedEvent(SimData.now+1, index-1));
 		if(index==4) {
 			car.calTravelTime(SimData.now);
+			car.count = ++SimData.total;
 			SimData.res.add(car);
 			SimData.runwayFree[index] = true;
 			return;

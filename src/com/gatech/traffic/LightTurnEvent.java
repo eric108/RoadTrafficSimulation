@@ -1,5 +1,7 @@
 package com.gatech.traffic;
 
+import java.util.Random;
+
 public class LightTurnEvent extends AbstractEvent{
 	
 	public LightTurnEvent(int schedule, int index) {
@@ -32,7 +34,10 @@ public class LightTurnEvent extends AbstractEvent{
 
 		}
 		RandomGenerator random = new RandomGenerator();
-		SimData.capacities[index] += random.UniformAB(-2, +2);
+		Random r = new Random(0);
+//		SimData.capacities[index] += r.nextInt(4)-2;
+
+		SimData.capacities[index] += random.UniformAB(-1, 1);
 	}
 
 }

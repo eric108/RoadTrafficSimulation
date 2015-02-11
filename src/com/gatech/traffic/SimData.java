@@ -9,6 +9,7 @@ import java.util.Queue;
 
 public class SimData {
 	// all variables here must be static
+	public static int total = 0;
 	private static  Comparator<AbstractEvent> comparator = new EventComparator();
 	public static PriorityQueue<AbstractEvent> queue = new PriorityQueue<AbstractEvent>(11, comparator);
 	public static int now = 0;

@@ -5,7 +5,7 @@ public class Car {
 	int endTime;
 	int travalTime;
 	int id;
-	
+	int count;
 	public Car(int id, int startTime) {
 		this.id = id;
 		this.startTime = startTime;

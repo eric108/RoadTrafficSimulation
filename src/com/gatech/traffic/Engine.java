@@ -10,7 +10,8 @@ public class Engine {
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		randomizeCarArrival();
-		randomizeTrafficLight();
+//		randomizeTrafficLight();
+		nonRandomizeTrafficLight();
 		int count = 0;
 		while(SimData.now<endTime && !SimData.queue.isEmpty()) {
 			System.out.println("Event " + count++);
@@ -23,6 +24,15 @@ public class Engine {
 		output();
 	}
 	
+	private static void nonRandomizeTrafficLight() {
+		// TODO Auto-generated method stub
+		for(int i = 0; i<5; i++) {
+			SimData.queue.add(new LightTurnEvent(SimData.now, i));
+		}
+		System.out.println("Randomized Initial Traffic Lights");
+
+	}
+
 	private static void randomizeCarArrival() {
 		RandomGenerator random = new RandomGenerator();
 		double[] cars = random.GeneratePoissonArrival(startTime, endTime);
@@ -58,7 +68,7 @@ public class Engine {
         
         for(Car car : SimData.res) {
         	bOutput.append(car.id).append(", ").append(car.startTime).append(", ")
-        		.append(car.endTime).append(", ").append(car.travalTime).append('\n');
+        		.append(car.endTime).append(", ").append(car.travalTime).append(", ").append(car.count).append('\n');
         	
         }
         out.println(bOutput.toString());
