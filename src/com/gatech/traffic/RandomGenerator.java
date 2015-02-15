@@ -32,7 +32,7 @@ public class RandomGenerator {
 	{
 		RandomNumber();
 		RandomNumber();
-		return (int)(Math.floor(lower + (upper - lower) * RandomNumber()));
+		return (int)(Math.ceil(lower + (upper - lower) * RandomNumber()));
 	}
 	
 	public double Exponential(float mu) // Exponential Distribution with mean = mu
@@ -75,7 +75,7 @@ public class RandomGenerator {
 	public double[] GeneratePoissonArrival(int start, int end)
 	{
 		
-		int CarNum = Poisson((int)(149 * (double)(end - start)/900));
+		int CarNum = Poisson((int)(180/4 * (double)(end - start)/900));
 		System.out.println(Integer.toString(CarNum));
 		double[] u = new double[CarNum];
 		u[0] = RandomNumber();

@@ -7,8 +7,11 @@ public class Test {
 		
 		//double[] arrivaltime = rg.GeneratePoissonArrival(0, 900);
 		//rg.Output(arrivaltime, "avtime");
-		String[] s = rg.LightInitial(1);
-		System.out.println("The light color is " + s[0] + " and the time is " + s[1]);
+		//int[] rand= new int[10];
+		for(int i = 0;i<10;i++){
+			System.out.println(Integer.toString(rg.UniformAB(-2, 2)));
+		}
+		
 	}
 
 }
