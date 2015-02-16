@@ -20,7 +20,7 @@ public class CrossedEvent extends AbstractEvent{
 			SimData.runwayFree[index] = true;
 			System.out.println("Time: " + SimData.now + " Event " + this.getClass().getSimpleName() + " for Car "+car.id+" at intersection 4");
 		} else {
-			SimData.queue.add(new ArrivalEvent(SimData.now+SimData.sectionTravelTime[index], index+1, car));
+			SimData.queue.add(new ArrivalEvent(SimData.now+(int)(SimData.ROAD10_11/car.speed*3600), index+1, car));
 			System.out.println("Time: " + SimData.now + " Event " + this.getClass().getSimpleName() +
 				": ArrivalEvent scheduled for Car " + car.id + " at intersection " + index);
 		}

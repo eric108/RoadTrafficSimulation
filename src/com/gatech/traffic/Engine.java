@@ -5,13 +5,13 @@ import java.io.PrintWriter;
 
 public class Engine {
 	static int startTime = 0;
-	static int endTime = 9000;
+	static int endTime = 3000;
 	static int lightStartTime = -88;
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		randomizeCarArrival();
-//		randomizeTrafficLight();
-		nonRandomizeTrafficLight();
+//		unSyncTrafficLight();
+		syncTrafficLight();
 		int count = 0;
 		while(SimData.now<endTime && !SimData.queue.isEmpty()) {
 			System.out.println("Event " + count++);
@@ -24,7 +24,7 @@ public class Engine {
 		output();
 	}
 	
-	private static void nonRandomizeTrafficLight() {
+	private static void syncTrafficLight() {
 		// TODO Auto-generated method stub
 		for(int i = 0; i<5; i++) {
 			SimData.queue.add(new LightTurnEvent(SimData.now, i));
@@ -38,14 +38,14 @@ public class Engine {
 		double[] cars = random.GeneratePoissonArrival(startTime, endTime);
 		int id = 0;
 		for(double time: cars) {
-			SimData.queue.add(new ArrivalEvent((int)time, 0, new Car(id++, (int)time)));
+			SimData.queue.add(new ArrivalEvent((int)time, 0, new Car(id++, (int)time, 25)));
 			
 		}
 		System.out.println(cars.length + ">>>>>>>>>>>>" + SimData.queue.size());
 		System.out.println("Randomized Initial Car Arrivals");
 	} 
 	
-	private static void randomizeTrafficLight() {
+	private static void unSyncTrafficLight() {
 		RandomGenerator random = new RandomGenerator();
 		
 		int[] times = new int[SimData.lightGs.length];

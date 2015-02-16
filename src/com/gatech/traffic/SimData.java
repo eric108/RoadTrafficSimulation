@@ -26,7 +26,7 @@ public class SimData {
 	
 	public static int[] capacities = {Integer.MAX_VALUE, 24, 24, 20, 19};
 	public static char[] trafficLights = {'R', 'R', 'R', 'R', 'R'};
-	public static int[] sectionTravelTime = {9, 9, 9, 7};
+//	public static int[] sectionTravelTime = {9, 9, 9, 7};
 	
 	public static int[] lightGs = {35, 41, 61, 63, 35};
 	public static int[] lightYs = {4, 3, 3, 3, 3};
@@ -52,9 +52,10 @@ public class SimData {
 //	public final static double LIGHT4Y =3.2;
 //	public final static double LIGHT4R = 46.1;
 	
-	public final static double ROAD10_11 = 121.0; 
-	public final static double ROAD11_12 = 117.96;
-	public final static double ROAD12_13 = 100.89;
-	public final static double ROAD13_14 = 92.96;
+	// mile
+	public final static double ROAD10_11 = 0.0229; 
+	public final static double ROAD11_12 = 0.02234;
+	public final static double ROAD12_13 = 0.01911;
+	public final static double ROAD13_14 = 0.0176;
 
 }

@@ -6,9 +6,11 @@ public class Car {
 	int travalTime;
 	int id;
 	int count;
-	public Car(int id, int startTime) {
+	int speed;
+	public Car(int id, int startTime, int speed) {
 		this.id = id;
 		this.startTime = startTime;
+		this.speed = speed;
 	}
 	public void calTravelTime(int endTime) {
 		this.endTime = endTime;
