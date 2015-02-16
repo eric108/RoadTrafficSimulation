@@ -26,9 +26,15 @@ public class Engine {
 	
 	private static void syncTrafficLight() {
 		// TODO Auto-generated method stub
-		for(int i = 0; i<5; i++) {
-			SimData.queue.add(new LightTurnEvent(SimData.now, i));
-		}
+//		for(int i = 0; i<5; i++) {
+//			SimData.queue.add(new LightTurnEvent(SimData.now, i));
+//		}
+		SimData.queue.add(new LightTurnEvent(SimData.now, 0));
+		SimData.queue.add(new LightTurnEvent(SimData.now - SimData.lightSum[1] + SimData.sectionTravelTime[0], 1));
+		SimData.queue.add(new LightTurnEvent(SimData.now -SimData.lightSum[2] + SimData.sectionTravelTime[1], 2));
+		SimData.queue.add(new LightTurnEvent(SimData.now - SimData.lightSum[3] + SimData.sectionTravelTime[2], 3));
+		SimData.queue.add(new LightTurnEvent(SimData.now -SimData.lightSum[4] + SimData.sectionTravelTime[3], 4));
+
 		System.out.println("Randomized Initial Traffic Lights");
 
 	}
@@ -38,7 +44,7 @@ public class Engine {
 		double[] cars = random.GeneratePoissonArrival(startTime, endTime);
 		int id = 0;
 		for(double time: cars) {
-			SimData.queue.add(new ArrivalEvent((int)time, 0, new Car(id++, (int)time, 25)));
+			SimData.queue.add(new ArrivalEvent((int)time, 0, new Car(id++, (int)time, random.UniformAB(20, 40))));
 			
 		}
 		System.out.println(cars.length + ">>>>>>>>>>>>" + SimData.queue.size());
