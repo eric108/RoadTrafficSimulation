@@ -10,6 +10,7 @@ public class ArrivalEvent extends AbstractEvent{
 	
 	public void execute() {
 		SimData.intersections.get(index).offer(car);
+		System.out.println("Time: " + SimData.now + " Event " + this.getClass().getSimpleName() + " for Car " + car.id + " at intersection " + index +" queue size " + SimData.intersections.get(index).size());
 		if(SimData.trafficLights[index] != 'R' 
 				&& ( index==4 ||SimData.intersections.get(index+1).size()<SimData.capacities[index+1] )
 				&& SimData.runwayFree[index] == true) {

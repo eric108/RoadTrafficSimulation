@@ -35,9 +35,9 @@ public class LightTurnEvent extends AbstractEvent{
 		}
 		RandomGenerator random = new RandomGenerator();
 		Random r = new Random(0);
-//		SimData.capacities[index] += r.nextInt(4)-2;
+		SimData.capacities[index] += r.nextInt(4)-2;
 
-		SimData.capacities[index] += random.UniformAB(-1, 1);
+//		SimData.capacities[index] += random.UniformAB(-2, 2);
 	}
 
 }
